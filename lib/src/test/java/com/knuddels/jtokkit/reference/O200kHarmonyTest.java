@@ -15,7 +15,7 @@ class O200kHarmonyTest {
     private static final Encoding ENCODING = Encodings.newDefaultEncodingRegistry().getEncoding(EncodingType.O200K_HARMONY);
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kBaseEncodesCorrectly(
             String input,
             String output
@@ -27,7 +27,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodesStable(String input) {
         var actual = ENCODING.decode(ENCODING.encode(input));
 
@@ -35,7 +35,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodesCorrectlyWithMaxTokensSet(
             String input,
             String output,
@@ -50,7 +50,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodesStableWithMaxTokensSet(String input) {
         var actual = ENCODING.decode(ENCODING.encode(input, 10).getTokens());
 
@@ -58,7 +58,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodeOrdinaryEncodesCorrectly(
             String input,
             String output
@@ -70,7 +70,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodeOrdinaryEncodesCorrectly(
             String input,
             String output,
@@ -85,7 +85,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodeOrdinaryEncodesStable(String input) {
         var actual = ENCODING.decode(ENCODING.encodeOrdinary(input));
 
@@ -93,7 +93,7 @@ class O200kHarmonyTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/o200k_base_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
+    @CsvFileSource(resources = "/o200k_harmony_encodings.csv", numLinesToSkip = 1, maxCharsPerColumn = 1_000_000)
     void o200kHarmonyEncodeOrdinaryEncodesStableWithMaxTokensSet(String input) {
         var actual = ENCODING.decode(ENCODING.encodeOrdinary(input, 10).getTokens());
 
@@ -102,7 +102,7 @@ class O200kHarmonyTest {
 
     @Test
     void o200kHarmonyEncodeOrdinaryEncodesSpecialTokensCorrectly() {
-        var input = "<|startoftext|>Hello<|endoftext|>, <|start|> <|end|> world <|reserved_201088|> ! <|endofprompt|>";
+        var input = "<|startoftext|>Hello<|endoftext|>, <|start|> <|end|> world <|reserved_201087|> ! <|endofprompt|>";
         var actual = ENCODING.decode(ENCODING.encodeOrdinary(input));
 
         assertEquals(input, actual);

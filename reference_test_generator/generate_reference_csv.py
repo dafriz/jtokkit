@@ -2,12 +2,12 @@ import os
 import tiktoken
 import csv
 
-encoding = tiktoken.get_encoding("o200k_base")
+encoding = tiktoken.get_encoding("o200k_harmony")
 
 with open("../lib/src/test/resources/base_prompts.csv", mode="r", encoding="utf-8") as f:
     csvdata = csv.reader(f, delimiter=",", quotechar='"')
     next(csvdata, None)
-    with open("../lib/src/test/resources/o200k_base_encodings.csv", mode="w", encoding="utf-8") as outFile:
+    with open("../lib/src/test/resources/o200k_harmony_encodings.csv", mode="w", encoding="utf-8") as outFile:
         writer = csv.writer(outFile, delimiter=",", quotechar='"')
         writer.writerow(["input","output","outputMaxTokens10"])
         for row in csvdata:
